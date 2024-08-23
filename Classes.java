@@ -1,29 +1,46 @@
-//Criação da classe principal
-public class Main {
-   
-// Método q inicia o código
-    public static void main (String[] args){
-       
-//Instâcia ou seja, a crição do objeto
-        Pessoa pessoa1 = new Pessoa();
-       
-//inserindo o valor no atributo nome, da Classe Pessoa
-        pessoa1.nome = "Davi";
+//inicia a classe
+public class Main{
+    //inicia o metodo
+    public static void main(String[]args){
+        //cria o objeto
+        Gato g1 = new Gato();
+        //adiciona atributos
+        g1.nome = "GARFIELD";
+        g1.peso = 8;
+        g1.idade = 5;
+        g1.dados();
+        g1.mia();
         
-//Inserindo o valor no atributo idade, da classe Pessoa
-        pessoa1.idade = 37;
+        //cria o objeto
+        Cachorro c1 = new Cachorro();
+        c1.latir();
         
-        Pessoa pessoa2 = new Pessoa();
-        pessoa2.nome = "Cris";
-        pessoa2.idade = 29; 
-        
-        System.out.println(pessoa2.nome);
-        System.out.println(pessoa2.idade);
     }
 }
 
-//Criação da classe Pessoa 
-class Pessoa{
+//CLASSE SUPREMA
+class Animal{
     String nome;
+    float peso;
     int idade;
+    void dados(){
+        System.out.println(nome);
+        System.out.println(idade);
+        System.out.println(peso);
+    }
+}
+
+//SUBCLASSE
+class Gato extends Animal{
+    void mia(){
+        System.out.println("miando...............");
+    }
+}
+
+class Cachorro extends Animal{
+    String latir;
+    void latir(){
+        System.out.println("latindo...............");
+    }
+}
 }
