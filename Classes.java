@@ -2,6 +2,7 @@
 public class Main{
     //inicia o metodo
     public static void main(String[]args){
+        
         //cria o objeto
         Gato g1 = new Gato();
         //adiciona atributos
@@ -11,8 +12,17 @@ public class Main{
         g1.dados();
         g1.mia();
         
+        System.out.println(" ");
+        System.out.println("--------------------------");
+        System.out.println(" ");
+        
         //cria o objeto
         Cachorro c1 = new Cachorro();
+        //adiciona atributos
+        c1.nome = "DogCoin";
+        c1.peso = 8;
+        c1.idade = 5;
+        c1.dados();
         c1.latir();
         
     }
@@ -33,14 +43,14 @@ class Animal{
 //SUBCLASSE
 class Gato extends Animal{
     void mia(){
-        System.out.println("miando...............");
+        System.out.println("miando");
     }
 }
 
+//SUBCLASSE
 class Cachorro extends Animal{
     String latir;
     void latir(){
-        System.out.println("latindo...............");
+        System.out.println("Gerando Crypto");
     }
-}
 }
