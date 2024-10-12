@@ -1,62 +1,78 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.*; /* Biblioteca para componentes gráficos do Swing */
+import java.awt.*;/* Biblioteca para componentes gráficos básicos */
+import java.awt.event.ActionEvent; /* Classe para eventos de ação */
+import java.awt.event.ActionListener;/* Interface para implementar ações em resposta a eventos */
 
-public class BankApp {
-    private float saldo = 0.0f;
+public class BankApp /*Nome da classe principal do aplicativo bancário */
+{ 
+    private float saldo = 0.0f; /* privado para promover o encapsulamento que oculta os detalhes internos de uma classe e controlar o acesso aos seus dados.*/
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(BankApp::new);
+    public static void main(String[] args) 
+    {
+        SwingUtilities.invokeLater(BankApp::new); /* Método para executar a criação da interface gráfica em uma thread separada, garantindo a segurança do Swing */
     }
+    //criação da janela
+    public BankApp() 
+    {
+        JFrame frame = new JFrame("Banco Digital"); /* Titulo da janela */
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); /*para dar stop no run do progrma ao fechar a janela*/
+        frame.setSize(400, 300); /* tamanho da janela*/
+        frame.setLayout(new GridLayout(5, 2)); /* layot da janela no caso 5linhas e 2colunas*/
 
-    public BankApp() {
-        JFrame frame = new JFrame("Banco Digital");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 300);
-        frame.setLayout(new GridLayout(5, 2));
-
-        JLabel saldoLabel = new JLabel("Seu Saldo: R$ 0.00");
-        JTextField valorField = new JTextField();
-        JButton consultaButton = new JButton("Consultar Saldo");
+        JLabel saldoLabel = new JLabel("Seu Saldo: R$ 0.00"); /* rotulo para exebir o saldo da conta att*/
+        JTextField valorField = new JTextField(); /* campo de texto para entrada de valores*/
         JButton saqueButton = new JButton("Sacar");
         JButton depositoButton = new JButton("Depositar");
         JButton sairButton = new JButton("Encerrar");
 
-        consultaButton.addActionListener(e -> {
+        //resposta att do saldo
+        consultaButton.addActionListener(e -> 
+        {
             saldoLabel.setText(String.format("Seu Saldo: R$ %.2f", saldo));
         });
 
-        saqueButton.addActionListener(e -> {
-            try {
+        // resposta att do saque
+        saqueButton.addActionListener(e -> 
+        { // 'e ->{...}' Lambda expression para definir a ação a ser executada quando o botão for clicado
+           //Bloco try-catch para capturar possíveis exceções de conversão de número.
+            try
+            {
                 float valorSaque = Float.parseFloat(valorField.getText());
-                if (valorSaque <= saldo) {
+                if (valorSaque <= saldo) 
+                {
                     saldo -= valorSaque;
                     JOptionPane.showMessageDialog(frame, "Saque feito com sucesso!");
-                } else {
+                } else 
+                    {
                     JOptionPane.showMessageDialog(frame, "Quantidade insuficiente para saque!");
-                }
+                    }
                 saldoLabel.setText(String.format("Seu Saldo: R$ %.2f", saldo));
-            } catch (NumberFormatException ex) {
+            } catch (NumberFormatException ex) 
+                {
                 JOptionPane.showMessageDialog(frame, "Digite um valor válido para o saque.");
-            }
+                }
         });
 
-        depositoButton.addActionListener(e -> {
-            try {
+        // resposta att do deposito
+        depositoButton.addActionListener(e -> 
+        { // 'e ->{...}' Lambda expression para definir a ação a ser executada quando o botão for clicado
+            try 
+            {
                 float valorDeposito = Float.parseFloat(valorField.getText());
                 saldo += valorDeposito;
                 JOptionPane.showMessageDialog(frame, "Depósito realizado com sucesso!");
                 saldoLabel.setText(String.format("Seu Saldo: R$ %.2f", saldo));
-            } catch (NumberFormatException ex) {
+            } catch (NumberFormatException ex) 
+                {
                 JOptionPane.showMessageDialog(frame, "Digite um valor válido para o depósito.");
-            }
+                }
         });
 
-        sairButton.addActionListener(e -> {
+        sairButton.addActionListener(e ->
+            {
             JOptionPane.showMessageDialog(frame, "Volte Sempre!");
             System.exit(0);
-        });
+            });
 
         frame.add(saldoLabel);
         frame.add(new JLabel("Valor:"));
