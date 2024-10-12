@@ -8,7 +8,7 @@ public class Main {
         float sc = 0.0f; // Saldo em conta
 
         Scanner scanner = new Scanner(System.in);
-
+        
         while (bitcoin) {
             System.out.println("\n--------------------Menu Principal:--------------------\n");
             System.out.println("                <- Digite uma opção ->");
