@@ -25,19 +25,14 @@ public class BankApp /*Nome da classe principal do aplicativo bancário */
         JButton depositoButton = new JButton("Depositar");
         JButton sairButton = new JButton("Encerrar");
 
-        //resposta att do saldo
-        consultaButton.addActionListener(e -> 
-        {
-            saldoLabel.setText(String.format("Seu Saldo: R$ %.2f", saldo));
-        });
-
         // resposta att do saque
         saqueButton.addActionListener(e -> 
-        { // 'e ->{...}' Lambda expression para definir a ação a ser executada quando o botão for clicado
+        { /* 'e ->{...}' Lambda expression para definir a ação a ser executada quando o botão for clicado */
+            
            //Bloco try-catch para capturar possíveis exceções de conversão de número.
             try
             {
-                float valorSaque = Float.parseFloat(valorField.getText());
+                float valorSaque = Float.parseFloat(valorField.getText()); /* parseFloat converte para float. */
                 if (valorSaque <= saldo) 
                 {
                     saldo -= valorSaque;
@@ -46,42 +41,42 @@ public class BankApp /*Nome da classe principal do aplicativo bancário */
                     {
                     JOptionPane.showMessageDialog(frame, "Quantidade insuficiente para saque!");
                     }
-                saldoLabel.setText(String.format("Seu Saldo: R$ %.2f", saldo));
+                saldoLabel.setText(String.format("Seu Saldo: R$ %.2f", saldo)); /* Atualiza o rótulo saldoLabel com o novo saldo.*/
             } catch (NumberFormatException ex) 
                 {
-                JOptionPane.showMessageDialog(frame, "Digite um valor válido para o saque.");
+                 JOptionPane.showMessageDialog(frame, "Digite um valor válido para o saque.");
                 }
         });
 
-        // resposta att do deposito
+        // resposta para ação do botão do deposito
         depositoButton.addActionListener(e -> 
-        { // 'e ->{...}' Lambda expression para definir a ação a ser executada quando o botão for clicado
+        { /* 'e ->{...}' Lambda expression para definir a ação a ser executada quando o botão for clicado*/
             try 
             {
-                float valorDeposito = Float.parseFloat(valorField.getText());
+                float valorDeposito = Float.parseFloat(valorField.getText()); /*Obtém o valor digitado no campo valorField e converte para float.*/
                 saldo += valorDeposito;
                 JOptionPane.showMessageDialog(frame, "Depósito realizado com sucesso!");
-                saldoLabel.setText(String.format("Seu Saldo: R$ %.2f", saldo));
+                saldoLabel.setText(String.format("Seu Saldo: R$ %.2f", saldo)); /* linha que att o saldo*/   
             } catch (NumberFormatException ex) 
                 {
-                JOptionPane.showMessageDialog(frame, "Digite um valor válido para o depósito.");
+                 JOptionPane.showMessageDialog(frame, "Digite um valor válido para o depósito.");
                 }
         });
 
+        // resposta para ação do botão de sair
         sairButton.addActionListener(e ->
-            {
-            JOptionPane.showMessageDialog(frame, "Volte Sempre!");
-            System.exit(0);
-            });
+        {
+         JOptionPane.showMessageDialog(frame, "Volte Sempre!");
+         System.exit(0); /*Encerra o aplicativo. */
+        });
 
+        //componentes da janela
         frame.add(saldoLabel);
         frame.add(new JLabel("Valor:"));
         frame.add(valorField);
-        frame.add(consultaButton);
         frame.add(saqueButton);
         frame.add(depositoButton);
         frame.add(sairButton);
-
         frame.setVisible(true);
     }
 }
