@@ -1,0 +1,40 @@
+// unidade 1, aula1 desenvolvimento WEB, guiado pelo professor Thiago
+
+public class Main { public static void main(String[] args) { System.out.println("Hello world!");
+
+/* Trabalhando com variaveis e constantes,
+onde variaveis são mutaveis, e constantes permanecem igual até o final */
+final var nome = "Seu Nome";
+var idade = 1;
+System.out.println(nome);
+System.out.println(idade);
+
+
+// nome = "Joaquim"; > caso n cometar essa linha estaria crashando o codigo, pois na linha 7 declaramos o nome como ''var final''(constante) 
+idade = 2;  
+System.out.println(idade);
+
+
+//Tipos de dados primitivos 
+/* int 
+   char 
+   float 
+   boolean */ 
+
+int inteiro = 10; //Numeros inteiros
+float decimal = 55.4f; //Numeros decimais
+char umaLetra = 'A'; //Um caracter
+boolean bool = true; //Verdadeiro e Falso
+
+
+//Outros Wrappers 
+/* não são primitivos e
+   começam sempre com maiusculo */
+
+Integer inteirob = 10; 
+Float decimalb = 17.6f; 
+Boolean outroBool = false;
+
+}
+
+}
