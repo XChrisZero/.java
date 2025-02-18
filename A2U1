@@ -1,0 +1,45 @@
+public class Main
+{
+    public static void main(String[] args)
+    {
+                // operadores de atribuição '='
+                int idade = 10;
+                String nome = "José";
+                System.out.print("seu nome é: ");
+                System.out.println(nome);
+                System.out.print("sua idade é: ");
+                System.out.println(idade);
+
+                //Operadores aritimeticos, matematicos.
+                int valorA = 10;
+                int valorB = 10;
+
+                int som = valorA + valorB; //soma
+                int sub = valorA - valorB; //subtração
+                int mul = valorA * valorB; //multiplicação
+                int div = valorA / valorB; // divisão
+                System.out.print("A soma é: ");
+                System.out.println(som);
+                System.out.print("A subtração é: ");
+                System.out.println(sub);
+                System.out.print("A multiplicação é: ");
+                System.out.println(mul);
+                System.out.print("A divisão é: ");
+                System.out.println(div);
+
+                //Operadores Relacionais
+                System.out.println(valorA != valorB); // != diferente
+                System.out.println(valorA == valorB); // == ingual
+
+                Integer valorC = 10; Integer valorD = 10;
+                System.out.println(valorC == valorD); //comparar classes não é recomendado com o equivalente
+                System.out.println(valorC.equals(valorD)); // ingual,
+
+                //Trabalhando com Strings, que é uma coleção de char
+                char umaletra = 'm';
+                String texto = "um texto"; //é um ARRAY
+        System.out.println(texto.charAt(texto.length()-1)); //.charAt(texto.length()-1) para sempre pegar a ultima letra independente do tamanho da array
+
+        System.exit(0); //parar o JAVA
+    }
+}
